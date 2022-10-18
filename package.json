@@ -1,0 +1,10 @@
+{
+  "private": "false",
+  "workspaces": [
+    "youtube",
+    "amazon"
+  ],
+  "dependencies": {
+   "selenium-webdriver": "4.5.0" 
+  }
+}
