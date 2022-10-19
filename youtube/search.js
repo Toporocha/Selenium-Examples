@@ -1,6 +1,5 @@
 const webdriver = require("selenium-webdriver");
 const chrome = require("selenium-webdriver/chrome");
-const firefox = require("selenium-webdriver/firefox");
 
 (async function example() {
   let driver = new webdriver.Builder()
@@ -13,6 +12,6 @@ const firefox = require("selenium-webdriver/firefox");
     await driver.findElement(By.name("q")).sendKeys("webdriver", Key.RETURN);
     await driver.wait(until.titleIs("webdriver - Google Search"), 1000);
   } finally {
-    //await driver.quit();
+    setTimeout(() => driver.quit(), 5000);
   }
 })();
