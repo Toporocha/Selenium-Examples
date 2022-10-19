@@ -1,3 +1,6 @@
 {
-    "name": "amazon"
+    "name": "youtube",
+    "scripts": {
+        "search": "yarn --cwd='..' run se:youtube search"
+    }
 }

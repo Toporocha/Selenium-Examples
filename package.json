@@ -1,10 +1,15 @@
 {
+  "name": "se",
   "private": "false",
   "workspaces": [
-    "youtube",
-    "amazon"
+    "amazon",
+    "youtube"
   ],
+  "scripts": {
+    "se:amazon": "func() { node amazon/$1.js; }; func",
+    "se:youtube": "func() { node youtube/$1.js; }; func"
+  },
   "dependencies": {
-   "selenium-webdriver": "4.5.0" 
+    "selenium-webdriver": "4.5.0"
   }
 }
