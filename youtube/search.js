@@ -1,17 +1,21 @@
-const webdriver = require("selenium-webdriver");
-const chrome = require("selenium-webdriver/chrome");
+const webdriver = require('selenium-webdriver')
 
-(async function example() {
-  let driver = new webdriver.Builder()
+;(async function example () {
+  const driver = new webdriver.Builder()
     .forBrowser(webdriver.Browser.CHROME)
     .setChromeOptions(/* ... */)
-    .build();
+    .build()
 
   try {
-    await driver.get("https://www.youtube.com");
-    await driver.findElement(By.name("q")).sendKeys("webdriver", Key.RETURN);
-    await driver.wait(until.titleIs("webdriver - Google Search"), 1000);
+    await driver.get('https://www.youtube.com')
+    await driver
+      .findElement(webdriver.By.name('q'))
+      .sendKeys('webdriver', webdriver.Key.RETURN)
+    await driver.wait(
+      webdriver.until.titleIs('webdriver - Google Search'),
+      1000
+    )
   } finally {
-    setTimeout(() => driver.quit(), 5000);
+    setTimeout(() => driver.quit(), 5000)
   }
-})();
+})()
