@@ -7,7 +7,9 @@
   ],
   "scripts": {
     "se:amazon": "func() { node amazon/$1.js; }; func",
-    "se:youtube": "func() { node youtube/$1.js; }; func"
+    "se:youtube": "func() { node youtube/$1.js; }; func",
+    "se:skyscanner": "func() { node skyscanner/$1.js; }; func",
+    "se:google": "func() { node google/$1.js; }; func"
   },
   "dependencies": {
     "selenium-webdriver": "4.5.0"
