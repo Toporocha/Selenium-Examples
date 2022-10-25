@@ -49,7 +49,7 @@ const { Entry } = require('selenium-webdriver/lib/logging')
     await driver
       .actions()
       .click(driver.findElement(By.css('[aria-label="Source text"]')))
-      .sendKeys('Testing')
+      .sendKeys('Finding element')
       .pause(500)
       .perform()
 
@@ -59,9 +59,11 @@ const { Entry } = require('selenium-webdriver/lib/logging')
       )
     )
 
-    assert.ok(parentOfResult.findElement(By.xpath('//*[text() = "Testen"]')))
+    assert.ok(
+      parentOfResult.findElement(By.xpath('//*[text() = "Element finden"]'))
+    )
   } finally {
-    setTimeout(() => driver.quit(), 5000)
+    setTimeout(() => driver.quit(), 1000)
   }
 })()
 
