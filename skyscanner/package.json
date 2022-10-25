@@ -1,6 +1,0 @@
-{
-    "name": "skyscanner",
-    "scripts": {
-        "search": "yarn --cwd='..' run se:skyscanner search"
-    }
-}

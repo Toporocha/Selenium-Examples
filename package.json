@@ -1,17 +1,15 @@
 {
   "name": "se",
   "private": "false",
-  "workspaces": [
-    "amazon",
-    "youtube"
-  ],
   "scripts": {
-    "se:amazon": "func() { node amazon/$1.js; }; func",
-    "se:youtube": "func() { node youtube/$1.js; }; func",
-    "se:skyscanner": "func() { node skyscanner/$1.js; }; func",
-    "se:google": "func() { node google/$1.js; }; func"
+    "test": "jest",
+    "test:google": "jest test/google/translate.spec.js --detectOpenHandles",
+    "test:skyscanner": "jest test/skyscanner/search.spec.js --detectOpenHandles"
   },
   "dependencies": {
+    "jest": "^29.2.2",
+    "mocha": "10.1.0",
     "selenium-webdriver": "4.5.0"
-  }
+  },
+  "devDependencies": {}
 }

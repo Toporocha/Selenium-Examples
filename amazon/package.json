@@ -1,7 +1,0 @@
-{
-    "name": "amazon",
-    "scripts": {
-        "search": "yarn --cwd='..' run se:amazon search",
-        "add-to-cart": "yarn --cwd='..' run se:amazon add-to-cart"
-    }
-}

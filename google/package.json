@@ -1,6 +1,0 @@
-{
-    "name": "translate",
-    "scripts": {
-        "translate": "yarn --cwd='..' run se:google translate"
-    }
-}
