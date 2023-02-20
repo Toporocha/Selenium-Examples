@@ -4,11 +4,12 @@
   "scripts": {
     "test": "jest",
     "test:google": "jest test/google/translate.spec.js --detectOpenHandles",
-    "test:skyscanner": "jest test/skyscanner/search.spec.js --detectOpenHandles"
+    "test:skyscanner": "jest test/skyscanner/search.spec.js --detectOpenHandles",
+    "test:youtube": "jest test/youtube/search.spec.js --detectOpenHandles",
+    "test:amazon": "jest test/amazon/search.spec.js --detectOpenHandles"
   },
   "dependencies": {
     "jest": "^29.2.2",
-    "mocha": "10.1.0",
     "selenium-webdriver": "4.5.0"
   },
   "devDependencies": {}
