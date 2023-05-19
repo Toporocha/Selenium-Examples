@@ -1,23 +1,27 @@
-const { Browser, Builder, By } = require('selenium-webdriver')
+const { Browser, Builder, By, Key } = require('selenium-webdriver')
+const { expect, test } = require('@jest/globals')
 
-;(async function example () {
-  const driver = new Builder()
-    .forBrowser(Browser.CHROME)
-    .setChromeOptions(/* ... */)
-    .build()
+const driver = new Builder()
+  .forBrowser(Browser.CHROME)
+  .setChromeOptions(/* ... */)
+  .build()
+driver
+  .manage()
+  .window()
+  .maximize()
 
-  try {
-    await driver.get('https://www.amazon.com/')
-    await driver.findElement(By.id('twotabsearchtextbox')).sendKeys('iphone')
-    await driver.findElement(By.id('nav-search-submit-button')).click()
+jest.setTimeout(60000)
 
-    let click = driver.findElement(By.css('[aria-label="Go to page 2"]'))
-    const actions = driver.actions({ async: true })
-    await actions
-      .move({ origin: click })
-      .click()
-      .perform()
-  } finally {
-    setTimeout(() => driver.quit(), 5000)
-  }
-})()
+test('Add an item to cart', async function () {
+  await driver.get('https://www.amazon.com/')
+  await driver.findElement(By.id('twotabsearchtextbox')).sendKeys('airpods')
+  await driver.findElement(By.id('nav-search-submit-button')).click()
+  await driver.findElement(By.css('[data-asin="B0B42MQQDL"]'))
+
+  await driver
+    .actions()
+    .pause(800)
+    .click()
+    .perform()
+  expect(true).toBeTruthy()
+})

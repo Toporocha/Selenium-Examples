@@ -1,5 +1,7 @@
-const { Browser, Builder, By, Key } = require('selenium-webdriver')
+const { Browser, Builder, By, Key, until } = require('selenium-webdriver')
 const { expect, test } = require('@jest/globals')
+const { urlContains } = require('selenium-webdriver/lib/until')
+
 // Feature: Translate
 // Translate from English to German
 
@@ -50,20 +52,24 @@ test('Translate the words "Finding element" from English to German', async funct
     .actions()
     .click(driver.findElement(By.css('[aria-label="Source text"]')))
     .sendKeys('Finding element')
-    .pause(500)
+    // .pause(500)
     .perform()
 
-  const parentOfResult = await driver.findElement(
-    By.xpath(
-      '//*[@aria-labelledby = string(//*[text() = "Translation results"]/@id)]'
-    )
-  )
+  const translatedText = await driver
+    .wait(until.elementLocated(By.xpath('//span[text()="Element finden"]')))
 
-  const elementWithTranslatedText = await parentOfResult.findElement(
-    By.xpath('//*[text() = "Element finden"]')
-  )
+    .getText()
+  // const parentOfResult = await driver.findElement(
+  //   By.xpath(
+  //     '//*[@aria-labelledby = string(//*[text() = "Translation results"]/@id)]'
+  //   )
+  // )
 
-  expect(elementWithTranslatedText).not.toBe(null)
+  // const elementWithTranslatedText = await parentOfResult.findElement(
+  //   By.xpath('//*[text() = "Element finden"]')
+  // )
+
+  expect(translatedText).toBe('Element finden')
 })
 
 // Scenario: Swap translation of the word "Testen" from German to English

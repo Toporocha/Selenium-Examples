@@ -3,14 +3,18 @@
   "private": "false",
   "scripts": {
     "test": "jest",
-    "test:google": "jest test/google/translate.spec.js --detectOpenHandles",
+    "test:google1": "jest test/google/gmail1.spec.js --detectOpenHandles",
+    "test:google2": "jest test/google/gmail2.spec.js --detectOpenHandles",
+    "test:google3": "jest test/google/gmail3.spec.js --detectOpenHandles",
+    "test:google4": "jest test/google/translate.spec.js --detectOpenHandles",
     "test:skyscanner": "jest test/skyscanner/search.spec.js --detectOpenHandles",
     "test:youtube": "jest test/youtube/search.spec.js --detectOpenHandles",
-    "test:amazon": "jest test/amazon/search.spec.js --detectOpenHandles"
+    "test:amazon1": "jest test/amazon/todaysdeal.spec.js --detectOpenHandles",
+    "test:amazon2": "jest test/amazon/addtocart.spec.js --detectOpenHandles"
   },
   "dependencies": {
+    "chai": "^4.3.7",
     "jest": "^29.2.2",
     "selenium-webdriver": "4.5.0"
-  },
-  "devDependencies": {}
+  }
 }

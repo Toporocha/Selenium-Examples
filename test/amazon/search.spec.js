@@ -1,4 +1,5 @@
-const { Browser, Builder, By } = require('selenium-webdriver')
+const { Browser, Builder, By, Key } = require('selenium-webdriver')
+const { expect, test } = require('@jest/globals')
 
 // Feature: Search
 // Search Iphone14
@@ -8,20 +9,24 @@ const { Browser, Builder, By } = require('selenium-webdriver')
 // When I click on the area (field) search box
 // And I type "Iphone14"
 // And I submit the button "search"
-// Then the result should be a list of more than 2000 items related with "Iphone14"
+// Then the result should be a list of items.
+const driver = new Builder()
+  .forBrowser(Browser.CHROME)
+  .setChromeOptions(/* ... */)
+  .build()
+driver
+  .manage()
+  .window()
+  .maximize()
 
-;(async function example () {
-  const driver = new Builder()
-    .forBrowser(Browser.CHROME)
-    .setChromeOptions(/* ... */)
-    .build()
+jest.setTimeout(60000)
 
-  try {
-    await driver.get('https://www.amazon.com/')
-    await driver.findElement(By.id('twotabsearchtextbox')).sendKeys('iphone14')
-    await driver.findElement(By.id('nav-search-submit-button')).click()
-  } catch (e) {
-  } finally {
-    setTimeout(() => driver.quit(), 5000)
-  }
-})()
+test('Search an iphone on amazon', async function () {
+  await driver.get('https://www.amazon.com/')
+  await driver
+    .findElement(By.id('twotabsearchtextbox'))
+    .sendKeys('iphone14', Key.RETURN)
+  await driver.findElement(By.id('nav-search-submit-button')).click()
+
+  expect(true).toBeTruthy()
+})

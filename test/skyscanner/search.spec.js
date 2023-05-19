@@ -1,4 +1,5 @@
 const { Browser, Builder, By, Key } = require('selenium-webdriver')
+const { expect, test } = require('@jest/globals')
 
 // Feature: Tickets
 
@@ -12,30 +13,30 @@ const { Browser, Builder, By, Key } = require('selenium-webdriver')
 // And I entered "Lisbonne "
 // And I clicked on the button with text "Search flights"
 // Then the result should be "please select travel dates" on the screen
+jest.setTimeout(60000)
 
-;(async function () {
+test('Search a flight ticlet from Dortmund to Budapest', async function () {
   let driver = await new Builder().forBrowser('chrome').build()
-  await driver.get('https://www.ryanair.com/')
+  await driver.get('https://www.wizzair.com/')
   await driver
-    .findElement(By.className('cookie-popup-with-overlay__button'))
-    .click()
-  //await driver.findElement(By.id('input-button__departure')).sendKeys('Luxembourg')
-  const clickable = driver
-    .findElement(By.id('input-button__departure'))
-    .sendKeys(Key.RETURN)
-  const actions = driver.actions({ async: true })
-  await actions
-    .doubleClick(clickable)
-    .pause(200)
-    .sendKeys('Dortmund')
+    .actions()
+    .pause(8000)
+    .perform()
+  const clickable = await driver.findElement(By.id('search-departure-station'))
+  await driver
+    .actions()
+    .pause(800)
     .perform()
 
-  // await driver.findElement(By.id('input-button__destination')).click()
-  // await driver
-  //.actions()
-  // .sendKeys('Milan-Bergame')
-  // .pause(800)
-  // .sendKeys(Key.ENTER)
-  // .perform()
-  // await driver .findElement(  By.className('flight-search-widget__start-search-container ng-tns-c81-3') )  .click()
-})()
+  //  clickable.sendKeys(Key.chord(Key.CONTROL, 'a'))
+  clickable.sendKeys('Dortmund').click()
+
+  // await driver  .findElement(By.id('search-arrival-station'))  .sendKeys('Porto', Key.ENTER)
+  // await driver.actions().pause(800).perform()
+
+  // await driver .findElement(By.id('search-departure-date')).sendKeys('25.11.2022')
+  // await driver.findElement( By.className('flight-search-widget__start-search-container ng-tns-c81-3') ).click()
+  // setTimeout(() => driver.quit(), 5000)
+
+  //expect(true).toBeTruthy()
+})
