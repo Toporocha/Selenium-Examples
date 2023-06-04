@@ -11,11 +11,11 @@ driver
   .window()
   .maximize()
 
-jest.setTimeout(100000)
+jest.setTimeout(60000)
 test('search for a video on youtube', async function () {
   await driver.get('https://www.youtube.com/')
   await driver.findElement(By.xpath('//button[. = "Accept all"]')).click()
-  //const searchBar =
+  //const searchBar = await driver.wait(until.elementLocated(By.name('search_query')), 25000)
   await driver.wait(until.elementLocated(By.name('search_query')), 25000)
   //await searchBar.sendKeys('video name', Key.RETURN)
 
@@ -36,4 +36,3 @@ test('search for a video on youtube', async function () {
   //   until.elementLocated(By.css('#video-title')))
   expect(secondResult).toBeDefined()
 })
-
