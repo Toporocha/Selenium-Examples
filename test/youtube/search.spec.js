@@ -12,6 +12,7 @@ driver
   .maximize()
 
 jest.setTimeout(60000)
+
 test('search for a video on youtube', async function () {
   await driver.get('https://www.youtube.com/')
   await driver.findElement(By.xpath('//button[. = "Accept all"]')).click()
